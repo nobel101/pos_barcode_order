@@ -3,7 +3,10 @@
     <t t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
         <xpath expr="//img[hasclass('pos-receipt-logo')]" position="after">
             <t t-if="receipt.pos_reference_barcode" class="border border-dark rounded">
-                <img t-att-src="receipt.pos_reference_barcode" class="pos-receipt-number"/>
+                <div class="align-items-center text-*-center img img-responsive oe_center">
+                    <img t-att-src="receipt.pos_reference_barcode" class="pos-receipt-number"/>
+                </div>
+
                 <br/>
             </t>
         </xpath>

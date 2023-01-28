@@ -16,11 +16,9 @@ var _super_order = models.Order.prototype;
 models.Order = models.Order.extend({
     export_for_printing: function() {
         var result = _super_order.export_for_printing.apply(this, arguments);
-        console.log('result',result)
         let qr_values = this.compute_order_qr_code(result.name);
-        console.log('qr_values', qr_values)
         const codeWriter = new window.ZXing.BrowserQRCodeSvgWriter();
-      let qr_code_svg = new XMLSerializer().serializeToString(codeWriter.write(qr_values, 150, 150));
+      let qr_code_svg = new XMLSerializer().serializeToString(codeWriter.write(result.name, 150, 150));
       result.pos_reference_barcode = "data:image/svg+xml;base64,"+ window.btoa(qr_code_svg);
       return result;
     },
