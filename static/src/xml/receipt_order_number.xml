@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//img[hasclass('pos-receipt-logo')]" position="after">
+            <t t-if="receipt.pos_reference_barcode" class="border border-dark rounded">
+                <img t-att-src="receipt.pos_reference_barcode" class="pos-receipt-number"/>
+                <br/>
+            </t>
+        </xpath>
+    </t>
+</templates>
